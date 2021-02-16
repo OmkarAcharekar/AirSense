@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".AirQuality"></activity>
+        <activity android:name=".HomeScreenActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".PhoneVerificationActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".OnBoardingActivity" />

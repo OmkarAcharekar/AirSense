@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Share"
+        android:onClick="doThis"
+        android:icon="@drawable/ic_baseline_share_24"
+     android:id="@+id/share"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="search"
+        android:id="@+id/exit"
+        android:onClick="doThis"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="Setting"
+        android:id="@+id/setting"
+        android:onClick="doThis"
+        android:icon="@drawable/ic_baseline_settings_24"
+        app:showAsAction="ifRoom"/>
+
+</menu>

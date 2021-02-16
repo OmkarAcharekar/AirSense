@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId())
         {
             case R.id.bSignIn:
-                Log.i(LOG_TAG, "Sign in clicked.");
+                startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
                 break;
             case R.id.tvForgotPassword:
                 startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
