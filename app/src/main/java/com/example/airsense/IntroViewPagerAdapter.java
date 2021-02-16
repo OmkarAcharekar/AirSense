@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.airsense.R;
+
 
 import java.util.List;
 
@@ -43,8 +43,6 @@ public class IntroViewPagerAdapter extends PagerAdapter {
         container.addView(layoutScreen);
 
         return layoutScreen;
-
-
 
 
 

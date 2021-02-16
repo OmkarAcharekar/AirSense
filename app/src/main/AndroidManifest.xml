@@ -9,20 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.airsense.onboarding"></activity>
-        <activity android:name="com.example.airsense.login" />
-        <activity android:name="com.example.airsense.Dashboard" />
-        <activity android:name="com.example.airsense.MainActivity">
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".PhoneVerificationActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".OnBoardingActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.airsense.IntroActivity"></activity>
-
-        <activity android:name=".MainActivity1"></activity>
-
+        <activity android:name=".IntroActivity" />
+        <activity android:name=".IntroActivityLayout" />
 
         <meta-data
             android:name="preloaded_fonts"

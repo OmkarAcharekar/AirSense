@@ -2,9 +2,27 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary1</item>
-        <item name="colorPrimaryDark">@color/colorPrimary1</item>
-        <item name="colorAccent">@color/colorAccent3</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#1E88E5</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="AppTheme.Fullscreen">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="TextInputLayoutTheme" parent="TextAppearance.AppCompat">
+        <item name="android:textColorPrimary">#F2EFF6</item>
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">#EFEDF3</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">#EFEDF3</item>
+        <item name="colorControlNormal">#EFEDF3</item>
+        <item name="colorControlActivated">#EFEDF3</item>
     </style>
 
 </resources>
