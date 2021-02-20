@@ -44,7 +44,10 @@ public class HomeScreenActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int itemIndex, String itemName) {
 
+
                 Toast.makeText(HomeScreenActivity.this, itemIndex + " " + itemName, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), AirQuality.class);
+                startActivity(i);
             }
 
             @Override
