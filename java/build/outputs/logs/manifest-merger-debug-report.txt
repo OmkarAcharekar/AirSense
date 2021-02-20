@@ -1,0 +1,37 @@
+-- Merging decision tree log ---
+manifest
+ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:1-6:12
+	package
+		ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:3:7-27
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+	android:versionName
+		ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:5:7-34
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+	xmlns:android
+		ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml:4:7-33
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+uses-sdk
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		ADDED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
+		INJECTED from A:\AndroidStudio\AndroidProjects\AirSense\java\AndroidManifest.xml
