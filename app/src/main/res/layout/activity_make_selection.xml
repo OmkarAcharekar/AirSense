@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="30dp"
+    tools:context=".resetpassword">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/forget_password_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+
+        <TextView
+            android:id="@+id/forget_password_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/muli_black"
+            android:includeFontPadding="false"
+            android:text="Make\nSelection"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/forget_password_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:fontFamily="@font/muli_extralight"
+            android:text="Select which contact details we should use to reset your password ?"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/make_selection_sms_box"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:background="#D2C9DD"
+            android:padding="10dp">
+
+
+          <ImageView
+            android:id="@+id/mobile_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/mobile_custom_icon" />
+
+
+        <TextView
+            android:id="@+id/mobile_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_toRightOf="@id/mobile_icon"
+            android:text="via sms"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/mobile_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mobile_title"
+            android:layout_toRightOf="@id/mobile_icon"
+
+            android:text="+923332562233"
+            android:textColor="#08040E"
+            android:textSize="20sp" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+             android:id="@+id/button2" />
+
+
+       </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/make_selection_mail_box"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="20dp"
+            android:background="#FCFFFF"
+            android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/mail_icon"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_baseline_email_24" />
+
+
+        <TextView
+            android:id="@+id/mail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_toRightOf="@id/mail_icon"
+            android:text="via email"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/mail_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mail_title"
+            android:layout_toRightOf="@id/mail_icon"
+
+            android:text="support@gmail.com"
+            android:textColor="#050307"
+            android:textSize="20sp" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"  />
+
+
+       </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+
+

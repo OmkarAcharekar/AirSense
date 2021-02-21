@@ -94,6 +94,10 @@ public class MainActivityside extends AppCompatActivity implements DrawerAdapter
             SettingsFrag settingsFrag = new SettingsFrag();
             transaction.replace(R.id.container,settingsFrag).commit();
         }
+        else if(position == POS_MESSAGES){
+            allmapsfrag allmapsfrag = new allmapsfrag();
+            transaction.replace(R.id.container,allmapsfrag).commit();
+        }
         slidingRootNav.closeMenu();
 
     }

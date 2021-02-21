@@ -2,6 +2,7 @@ package com.example.airsense;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,8 +31,9 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         switch (view.getId())
         {
             case R.id.bRecoverPassword:
-                Log.i(LoginActivity.LOG_TAG, "Recover password clicked.");
-                break;
+                Intent i = new Intent(this,resetpassword.class);
+                startActivity(i);
+                //break;
             case R.id.tvSignIn:
                 finish();
                 break;

@@ -32,6 +32,14 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".ForgetPasswordSuccessMessage"></activity>
+        <activity android:name=".SetNewPassword"></activity>
+        <activity android:name=".MakeSelection" />
+        <activity android:name=".resetpassword"></activity>
+
+
+
         <activity android:name=".MainActivityside">
 
         </activity>
@@ -122,6 +130,7 @@
             android:name=".utils.StubContentProvider"
             android:authorities="cz.martykan.forecastie.authority1"
             android:exported="true" />
+
 
 
         <meta-data
