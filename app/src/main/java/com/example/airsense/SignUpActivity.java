@@ -2,6 +2,7 @@ package com.example.airsense;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,13 +41,33 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId())
         {
             case R.id.bSignUp:
-                Log.i(LoginActivity.LOG_TAG, "Sign up clicked.");
-                break;
+                if(!validatePhoneNumber()){
+                    return;
+                }
+                String name = fullname.getEditText().getText().toString().trim();
+                String emailid = email.getEditText().getText().toString().trim();
+                String password1 = password.getEditText().getText().toString().trim();
+                String val = phone.getEditText().getText().toString().trim();
+                String _phone = "+"+ 91 + val;
+
+                Intent intent = new Intent(SignUpActivity.this,PhoneVerificationActivity.class);
+                fullname = findViewById(R.id.tilUsername);
+                phone= findViewById(R.id.tilPhone);
+                email = findViewById(R.id.tilEmail);
+                password = findViewById(R.id.tilPassword);
+                intent.putExtra("username",name);
+                intent.putExtra("user_email",emailid);
+                intent.putExtra("user_password",password1);
+                intent.putExtra("phoneNo",_phone);
+                startActivity(intent);
+
             case R.id.tvSignIn:
                 finish();
                 break;
         }
     }
+
+
 
 
     private boolean validateFullName() {
@@ -97,6 +118,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             return true;
         }
     }
+
 
     private boolean validatePhoneNumber() {
         String val = phone.getEditText().getText().toString().trim();

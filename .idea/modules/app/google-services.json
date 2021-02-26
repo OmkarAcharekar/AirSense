@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "819160490017",
+    "project_id": "airsense-7d969",
+    "storage_bucket": "airsense-7d969.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819160490017:android:fa4681ab3f4c7a3fbf4360",
+        "android_client_info": {
+          "package_name": "com.example.airsense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819160490017-2chenj7sa8980m0ki5a5fhduee3jrfkc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.airsense",
+            "certificate_hash": "12e49ea75e4f24dda6c22bd42ae9a5bbb016fe52"
+          }
+        },
+        {
+          "client_id": "819160490017-blc1ph62v0atafqumr39fed4js20h0p5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXO_ew7r74aq6x5LOcxhfN50TJVMBS8sE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819160490017-blc1ph62v0atafqumr39fed4js20h0p5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -41,16 +41,16 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="156dp"
         android:fontFamily="@font/amaranth"
-        android:text="AɪʀSᴇɴꜱᴇ"
+        android:text="AirSense"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="65sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView3"
@@ -62,10 +62,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintVertical_bias="0.562" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

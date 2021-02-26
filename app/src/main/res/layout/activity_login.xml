@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:textColorHint="@color/textColorPrimary"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:startIconDrawable="@drawable/ic_baseline_phone_24"
 
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
@@ -61,7 +61,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Phone Number"
             android:theme="@style/TextInputLayoutTheme"
 
             android:maxLines="1"
