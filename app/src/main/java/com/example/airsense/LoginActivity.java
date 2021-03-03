@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.airsense.activities.MainActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -79,6 +80,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 password.setErrorEnabled(false);
                                 String fullname =  snapshot.child(_phone).child("fullname").getValue(String.class);
                                 Toast.makeText(LoginActivity.this,fullname, Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, MainActivityside.class);
+                                startActivity(intent);
 
                             } else {
                                 Toast.makeText(LoginActivity.this, "password does not match", Toast.LENGTH_SHORT).show();

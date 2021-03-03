@@ -366,7 +366,8 @@ public class AirQuality extends AppCompatActivity {
 
 
         Imgproc.calcHist(list, new MatOfInt(0), new Mat(), hist, histSize, new MatOfFloat(0, 256));
-        Core.normalize(hist,hist);
+        Core.normalize(hist,hist,0,255,Core.NORM_MINMAX,CvType.CV_8UC1);
+
 
         //to find entropy
 //        double ent = 0;

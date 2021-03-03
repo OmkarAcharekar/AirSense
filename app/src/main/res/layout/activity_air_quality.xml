@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,44 +11,49 @@
 
     <!-- add ImageView to display the captured image-->
 
-    <Button
-        android:id="@+id/camera_button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/click_image"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="159dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="151dp"
-        android:layout_marginBottom="116dp"
-        android:text="Camera" />
 
     <ImageView
         android:id="@+id/click_image"
-        android:layout_width="350dp"
-        android:layout_height="450dp"
+        android:layout_width="335dp"
+        android:layout_height="442dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="10dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
+
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="115dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:text="Capture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857" />
 
     <Button
         android:id="@+id/buttonfeatures"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_below="@+id/click_image"
+        android:layout_width="114dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="61dp"
-        android:text="FEATURES" />
-</RelativeLayout>
+        android:text="Check AQI"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/click_image"
+        app:layout_constraintVertical_bias="0.945" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

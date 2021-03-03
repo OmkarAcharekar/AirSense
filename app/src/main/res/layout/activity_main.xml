@@ -40,7 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="156dp"
-        android:fontFamily="@font/amaranth"
         android:text="AirSense"
         android:textAlignment="center"
         android:textColor="@android:color/white"

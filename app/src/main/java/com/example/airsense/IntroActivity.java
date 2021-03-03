@@ -69,9 +69,9 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Fresh Food","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img1));
-        mList.add(new ScreenItem("Fast Delivery","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img2));
-        mList.add(new ScreenItem("Easy Payment","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.img3));
+        mList.add(new ScreenItem("\n Air Quality","Capture Image and Know The Air You Breadth ",R.drawable.asas));
+        mList.add(new ScreenItem("Weather","Check Current Weather \n Forecast for next 3 Days",R.drawable.weatherpixabay));
+        mList.add(new ScreenItem("News","Know News About Air Quality and Weather Around the World",R.drawable.newspixabay));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -99,7 +99,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (position == mList.size()-1) { // when we rech to the last screen
 
-                    // TODO : show the GETSTARTED Button and hide the indicator and the next button
+
 
                     loaddLastScreen();
 
@@ -196,15 +196,13 @@ public class IntroActivity extends AppCompatActivity {
 
     }
 
-    // show the GETSTARTED Button and hide the indicator and the next button
+
     private void loaddLastScreen() {
 
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
         tvSkip.setVisibility(View.INVISIBLE);
         tabIndicator.setVisibility(View.INVISIBLE);
-        // TODO : ADD an animation the getstarted button
-        // setup animation
         btnGetStarted.setAnimation(btnAnim);
 
 

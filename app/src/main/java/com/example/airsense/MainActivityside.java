@@ -18,9 +18,6 @@ import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
 
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public class MainActivityside extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
 
