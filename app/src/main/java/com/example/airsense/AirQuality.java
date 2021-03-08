@@ -74,8 +74,6 @@ public class AirQuality extends AppCompatActivity {
                         = new Intent(MediaStore
                         .ACTION_IMAGE_CAPTURE);
 
-                // Start the activity with camera_intent,
-                // and request pic id
                 startActivityForResult(camera_intent, pic_id);
             }
         });
@@ -265,45 +263,18 @@ public class AirQuality extends AppCompatActivity {
         }
         trList.put(0,0,l);
 
-//
-//        Mat he = new Mat();
-//        he = trList.clone();
-//        double [] k = new double[(int)(he.total()*he.channels())];
-//        he.convertTo(he,CvType.CV_64FC3);
-//        he.get(0,0,k);
-//        for(int i=0;i<k.length;i++){
-//            k[i]=((k[i]-(Core.minMaxLoc(he).minVal)))/(float)(255*(Core.minMaxLoc(he).maxVal- Core.minMaxLoc(he).minVal));
-//        }
-//        he.put(0,0,k);
-//        for (int i = 0; i < he.rows(); i++) {
-//            for (int j = 0; j < he.cols(); j++) {
-//                values1.add((float)he.get(i,j)[0]);
-//            }
-//        }
-//        textView.setText("dhihdfi"+he);
-//
-//
-//
-//        Mat t1 = new Mat();
-//        textView.setText("values: "+values1);
-//
-//            he.convertTo(t1,CvType.CV_8UC4);
 
-        // textView.setText("dhidf"+(Core.minMaxLoc(trList).maxVal - Core.minMaxLoc(trList).minVal));
-
-        //textView.setText("C:"+C.dump());
         Mat img_norm = new Mat();
         Core.normalize(trList,img_norm,0,255,Core.NORM_MINMAX,CvType.CV_8UC1);
 
         showImage(img_norm);
-//       values(img_norm);
 
 
     }
 
     public void contrast(){
 
-        //to resize image
+
         dest = new Mat();
         Size scaleSize = new Size(256,256);
         Imgproc.resize(img,dest, scaleSize , 0, 0, INTER_AREA);
@@ -369,18 +340,7 @@ public class AirQuality extends AppCompatActivity {
         Core.normalize(hist,hist,0,255,Core.NORM_MINMAX,CvType.CV_8UC1);
 
 
-        //to find entropy
-//        double ent = 0;
-//        Mat h = hist.clone();
-//        double[] b = new double[(int)(hist.channels()*hist.total())];
-//        for(int i=5;i<256;i++) {
-//            try {
-//                ent += b[i] * Math.log(b[i]);
-//            } catch (Exception e) {
-//                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-//            }
-//            textView.setText("degfu= "+ent);
-//        }
+
 
         double total = 0;
         double ent =0;

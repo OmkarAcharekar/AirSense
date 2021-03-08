@@ -1,7 +1,7 @@
 <!-- Do not change the order of any strings in here, without discussing first on the "Issues" page -->
 <!-- Do not delete any blank lines -->
 <resources>
-    <string name="app_name">Forecastie</string>
+    <string name="app_name">AirSense</string>
     <!-- Main activity titles -->
     <string name="action_search">Търсене</string>
     <string name="action_refresh">Опресняване</string>
@@ -63,7 +63,7 @@
     <string name="setting_theme_fresh">Фреш</string>
     <string name="setting_theme_classic">Класик</string>
     <string name="setting_theme_dark">Фреш тъмен</string>
-    <string name="setting_theme_classic_dark">Класик тъмен</string>
+    <string name="setting_theme_classic_dark"></string>
 
     <string name="wind_direction_format_none">Няма индикация</string>
     <string name="wind_direction_format_arrows">Стрелки</string>
