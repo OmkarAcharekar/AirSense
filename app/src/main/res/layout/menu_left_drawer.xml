@@ -14,8 +14,15 @@
         android:layout_width="102dp"
         android:layout_height="89dp"
         android:layout_gravity="left"
-        android:paddingLeft="20dp"
-        android:src="@drawable/newspaper" />
+        android:paddingLeft="40dp"
+        android:src="@mipmap/applauncherlogo" />
+
+    <TextView
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="AirSense"
+        android:textAlignment="center"
+        android:textSize="20dp" />
 
     <Space
         android:layout_width="wrap_content"

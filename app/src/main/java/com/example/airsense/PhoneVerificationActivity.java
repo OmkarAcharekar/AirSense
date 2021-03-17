@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 public class PhoneVerificationActivity extends AppCompatActivity {
     PinView pinfromuser;
     String codeBySystem;
-    String name,email,password,phoneNo;
+    String name,email,password,phoneNo,whatToDo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,8 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         email = getIntent().getStringExtra("user_email");
         password = getIntent().getStringExtra("user_password");
         phoneNo = getIntent().getStringExtra("phoneNo");
+        whatToDo = getIntent().getStringExtra("whatToDo");
+
 
 
 
@@ -110,7 +113,13 @@ public class PhoneVerificationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                          storeNewUsersData();
+                          if(whatToDo.equals("updateData")){
+                              updateOldUsersData();
+
+                          }else{
+                              storeNewUsersData();
+
+                          }
 
                             // ...
                         } else {
@@ -121,6 +130,13 @@ public class PhoneVerificationActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void updateOldUsersData() {
+        Intent intent = new Intent(getApplicationContext(),SetNewPassword.class);
+        intent.putExtra("phoneNo",phoneNo);
+        startActivity(intent);
+        finish();
     }
 
     private void storeNewUsersData() {

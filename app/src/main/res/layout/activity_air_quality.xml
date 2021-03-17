@@ -14,15 +14,15 @@
 
     <ImageView
         android:id="@+id/click_image"
-        android:layout_width="335dp"
-        android:layout_height="442dp"
+        android:layout_width="332dp"
+        android:layout_height="544dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.179" />
 
     <Button
         android:id="@+id/camera_button"
@@ -38,7 +38,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintVertical_bias="0.881" />
 
     <Button
         android:id="@+id/buttonfeatures"
@@ -54,6 +54,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/click_image"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintVertical_bias="0.951" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

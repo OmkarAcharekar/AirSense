@@ -2,6 +2,8 @@ package com.example.airsense;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +12,8 @@ import android.provider.MediaStore;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,6 +45,7 @@ public class AirQuality extends AppCompatActivity {
     private Button buttonTakePicture,features;
     private Uri file;
     Bitmap photo;
+    double ent =0;
     public static final String TAG = "MainActivity";
     public static final int REQUEST_TAKE_PHOTO = 100;
     Uri photoURI;
@@ -63,6 +68,11 @@ public class AirQuality extends AppCompatActivity {
         camera_open_id = (Button)findViewById(R.id.camera_button);
         click_image_id = (ImageView)findViewById(R.id.click_image);
         features = (Button)findViewById(R.id.buttonfeatures);
+        Window window = AirQuality.this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.setStatusBarColor(ContextCompat.getColor(AirQuality.this, R.color.black));
+
 
         camera_open_id.setOnClickListener(new View.OnClickListener() {
 
@@ -81,11 +91,16 @@ public class AirQuality extends AppCompatActivity {
         features.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readImageFromResources();
-                transmission();
-                contrast();
-                entropy();
-            }
+
+                if(photo != null){
+
+                startActivity(new Intent(AirQuality.this,AQI.class));
+                //readImageFromResources();
+                //transmission();
+               // contrast();
+                //entropy();
+                //Toast.makeText(getApplicationContext(),"Entropy: "+ent,Toast.LENGTH_LONG).show();
+            }}
         });
 
         OpenCVLoader.initDebug();
@@ -311,6 +326,7 @@ public class AirQuality extends AppCompatActivity {
 
         float contra;
         contra = (float) Math.sqrt(ss/(256*256));
+        Toast.makeText(getApplicationContext(),"Constrast: "+contra,Toast.LENGTH_LONG).show();
     }
 
     public void entropy(){
@@ -337,13 +353,23 @@ public class AirQuality extends AppCompatActivity {
 
 
         Imgproc.calcHist(list, new MatOfInt(0), new Mat(), hist, histSize, new MatOfFloat(0, 256));
-        Core.normalize(hist,hist,0,255,Core.NORM_MINMAX,CvType.CV_8UC1);
+        Core.normalize(hist,hist);
 
-
-
+        //to find entropy
+//        double ent = 0;
+//        Mat h = hist.clone();
+//        double[] b = new double[(int)(hist.channels()*hist.total())];
+//        for(int i=5;i<256;i++) {
+//            try {
+//                ent += b[i] * Math.log(b[i]);
+//            } catch (Exception e) {
+//                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+//            }
+//            textView.setText("degfu= "+ent);
+//        }
 
         double total = 0;
-        double ent =0;
+
         for (int row = 0; row < hist.rows(); row++) {
             double[] val = hist.get(row, 0);
             for(int p=0;p<val.length;p++) {
@@ -355,11 +381,13 @@ public class AirQuality extends AppCompatActivity {
                 }
             }
 
-
         }
 
 //        values(hist);
     }
+
+
+
 
     public void values(Mat img){
         List<Float> value = new ArrayList<>();

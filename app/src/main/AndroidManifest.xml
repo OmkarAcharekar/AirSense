@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.airsense">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -16,7 +17,8 @@
         android:roundIcon="@mipmap/applauncherlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".AirQuality"></activity>
+        <activity android:name=".AQI"></activity>
+        <activity android:name=".AirQuality" />
         <activity android:name=".HomeScreenActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PhoneVerificationActivity" />
@@ -31,29 +33,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".ForgetPasswordSuccessMessage"></activity>
-        <activity android:name=".SetNewPassword"></activity>
+        <activity android:name=".ForgetPasswordSuccessMessage" />
+        <activity android:name=".SetNewPassword" />
         <activity android:name=".MakeSelection" />
-        <activity android:name=".resetpassword"></activity>
-
-
-
-        <activity android:name=".MainActivityside">
-
-        </activity>
+        <activity android:name=".resetpassword" />
+        <activity android:name=".MainActivityside"></activity>
         <activity android:name=".IntroActivity" />
         <activity android:name=".IntroActivityLayout" />
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.SplashActivity"
-            android:theme="@style/SplashTheme"  />
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".activities.SettingsActivity"
             android:parentActivityName=".activities.MainActivity"
@@ -72,7 +65,7 @@
             tools:ignore="UnusedAttribute" /> <!-- Receivers -->
         <receiver
             android:name=".widgets.ExtensiveWidgetProvider"
-            android:label="@string/widget_label_extensive" >
+            android:label="@string/widget_label_extensive">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -83,7 +76,7 @@
         </receiver>
         <receiver
             android:name=".widgets.TimeWidgetProvider"
-            android:label="@string/widget_label_time" >
+            android:label="@string/widget_label_time">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -94,7 +87,7 @@
         </receiver>
         <receiver
             android:name=".widgets.SimpleWidgetProvider"
-            android:label="@string/widget_label_simple" >
+            android:label="@string/widget_label_simple">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -105,7 +98,7 @@
         </receiver>
         <receiver
             android:name=".widgets.ClassicTimeWidgetProvider"
-            android:label="@string/widget_label_classic" >
+            android:label="@string/widget_label_classic">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -114,7 +107,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/time_widget_classic" />
         </receiver>
-        <receiver android:name=".AlarmReceiver" >
+        <receiver android:name=".AlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
@@ -130,8 +123,6 @@
             android:name=".utils.StubContentProvider"
             android:authorities="cz.martykan.forecastie.authority1"
             android:exported="true" />
-
-
 
         <meta-data
             android:name="preloaded_fonts"

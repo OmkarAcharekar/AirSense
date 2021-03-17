@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
         android:background="#fff"
-        app:titleTextColor="#E64EE4"/>
+        app:titleTextColor="#0386F8"/>
 
     <FrameLayout
         android:id="@+id/container"

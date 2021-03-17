@@ -5,7 +5,6 @@
 
     -<style parent="Theme.AppCompat.Light.NoActionBar" name="AppTheme1">
 
-    <!-- Customize your theme here. -->
 
 
     <item name="colorPrimary">@color/colorPrimary</item>
