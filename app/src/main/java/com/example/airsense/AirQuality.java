@@ -4,7 +4,12 @@ package com.example.airsense;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.Interpreter;
+
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -19,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.airsense.ml.AirSenseModel;
+
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
@@ -30,8 +37,15 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.opencv.imgproc.Imgproc.INTER_AREA;
@@ -39,13 +53,16 @@ import static org.opencv.imgproc.Imgproc.INTER_AREA;
 public class AirQuality extends AppCompatActivity {
 
     private TextView textView,textContrst;
+    protected Interpreter tflite;
     public static final int REQUEST_IMAGE_CAPTURE = 100;
     private ImageView imageView;
     private Mat img,dest;
     private Button buttonTakePicture,features;
     private Uri file;
+    int capacity = 10;
     Bitmap photo;
     double ent =0;
+
     public static final String TAG = "MainActivity";
     public static final int REQUEST_TAKE_PHOTO = 100;
     Uri photoURI;
@@ -63,7 +80,11 @@ public class AirQuality extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_air_quality);
-
+        try {
+            tflite = new Interpreter(loadModelFile());
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
 
         camera_open_id = (Button)findViewById(R.id.camera_button);
         click_image_id = (ImageView)findViewById(R.id.click_image);
@@ -104,9 +125,52 @@ public class AirQuality extends AppCompatActivity {
         });
 
         OpenCVLoader.initDebug();
+        opener();
 
 
     }
+
+    float[] intArray = new float[]{0.8333333f , 0.7900174f, 1.f , 0.7340425f , 0.01749871f,
+            0.14705883f, 0.05925926f, 0.6363636f, 2.f       , 0.2793296f};
+
+
+    public void opener() {
+        float prediction=doInference(intArray);
+        Toast.makeText(getApplicationContext(),"AQI"+ prediction,Toast.LENGTH_LONG).show();
+
+    }
+
+    private float doInference(float[] inputString) {
+        float[] inputVal=new float[10];
+        inputVal[0]=inputString[0];
+        inputVal[1]=inputString[1];
+        inputVal[2]=inputString[2];
+        inputVal[3]=inputString[3];
+        inputVal[4]=inputString[4];
+        inputVal[5]=inputString[5];
+        inputVal[6]=inputString[6];
+        inputVal[7]=inputString[7];
+        inputVal[8]=inputString[8];
+        inputVal[9]=inputString[9];
+        float[][] output=new float[1][1];
+        tflite.run(inputVal,output);
+        float inferredValue=output[0][0];
+        return  inferredValue;
+    }
+
+    private MappedByteBuffer loadModelFile() throws IOException{
+        AssetFileDescriptor fileDescriptor=this.getAssets().openFd("AirSenseModel1.tflite");
+        FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel=inputStream.getChannel();
+        long startOffset=fileDescriptor.getStartOffset();
+        long declareLength=fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declareLength);
+    }
+
+
+
+
+
 
     // This method will help to retrieve the image
     protected void onActivityResult(int requestCode,
@@ -399,6 +463,9 @@ public class AirQuality extends AppCompatActivity {
         }
 
     }
+
+
+
 
 
 }
