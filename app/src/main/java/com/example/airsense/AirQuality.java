@@ -2,15 +2,24 @@ package com.example.airsense;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.MediaStore;
 
@@ -47,10 +56,11 @@ import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import static org.opencv.imgproc.Imgproc.INTER_AREA;
 
-public class AirQuality extends AppCompatActivity {
+public class AirQuality extends AppCompatActivity implements LocationListener{
 
     private TextView textView,textContrst;
     protected Interpreter tflite;
@@ -62,6 +72,7 @@ public class AirQuality extends AppCompatActivity {
     int capacity = 10;
     Bitmap photo;
     double ent =0;
+    LocationManager locationManager;
 
     public static final String TAG = "MainActivity";
     public static final int REQUEST_TAKE_PHOTO = 100;
@@ -80,11 +91,19 @@ public class AirQuality extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_air_quality);
+        if (ContextCompat.checkSelfPermission(AirQuality.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(AirQuality.this,new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            },100);
+        }
         try {
             tflite = new Interpreter(loadModelFile());
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
+        getLocation();
 
         camera_open_id = (Button)findViewById(R.id.camera_button);
         click_image_id = (ImageView)findViewById(R.id.click_image);
@@ -94,12 +113,12 @@ public class AirQuality extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(AirQuality.this, R.color.black));
 
-
         camera_open_id.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v)
             {
+
 
                 Intent camera_intent
                         = new Intent(MediaStore
@@ -114,29 +133,54 @@ public class AirQuality extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(photo != null){
+                    float pred1 = opener();
+                    String pred = String.format("%.2f",pred1);
+                Intent intent = new Intent(AirQuality.this, AQI.class);
+                intent.putExtra("prediction",pred);
+                startActivity(intent);
+                readImageFromResources();
 
-                startActivity(new Intent(AirQuality.this,AQI.class));
-                //readImageFromResources();
-                //transmission();
-               // contrast();
-                //entropy();
-                //Toast.makeText(getApplicationContext(),"Entropy: "+ent,Toast.LENGTH_LONG).show();
             }}
         });
 
         OpenCVLoader.initDebug();
-        opener();
 
 
     }
 
-    float[] intArray = new float[]{0.8333333f , 0.7900174f, 1.f , 0.7340425f , 0.01749871f,
-            0.14705883f, 0.05925926f, 0.6363636f, 2.f       , 0.2793296f};
+    @SuppressLint("MissingPermission")
+    private void getLocation() {
+
+        try {
+            locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,500, AirQuality.this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
-    public void opener() {
+    public float opener() {
+
+        readImageFromResources();
+        transmission();
+        float contr=  contrast();
+        float contrcal = contr/75.f;
+        float entro = entropy();
+        float entrocal = -(entro);
+        float entrocalf = entrocal/68.f;
+
+
+
+        float[] intArray = new float[]{0.6666667f , contrcal, entrocalf, 0.5638298f , 0.30468348f,
+                0.80529412f, 0.04074074f, 0.98727275f, 2.f        , 0.90486034f};
+
+        Toast.makeText(getApplicationContext(),"contr"+ contr +"Entro" + entro,Toast.LENGTH_SHORT).show();
+
         float prediction=doInference(intArray);
-        Toast.makeText(getApplicationContext(),"AQI"+ prediction,Toast.LENGTH_LONG).show();
+        return  prediction;
 
     }
 
@@ -169,9 +213,6 @@ public class AirQuality extends AppCompatActivity {
 
 
 
-
-
-
     // This method will help to retrieve the image
     protected void onActivityResult(int requestCode,
                                     int resultCode,
@@ -197,7 +238,7 @@ public class AirQuality extends AppCompatActivity {
         img = new Mat();
 
         Utils.bitmapToMat(photo,img);
-        Toast.makeText(getApplicationContext(),"Image is loaded",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Image is loaded",Toast.LENGTH_SHORT).show();
 
         return img;
 
@@ -207,7 +248,7 @@ public class AirQuality extends AppCompatActivity {
         Bitmap bm = Bitmap.createBitmap(img.cols(), img.rows(),Bitmap.Config.RGB_565);
         Utils.matToBitmap(img, bm);
 
-        click_image_id.setImageBitmap(bm);
+        //click_image_id.setImageBitmap(bm);
     }
     private void transmission(){
 
@@ -215,12 +256,12 @@ public class AirQuality extends AppCompatActivity {
         dest = new Mat();
         Size scaleSize = new Size(256,256);
         Imgproc.resize(img,dest, scaleSize , 0, 0, INTER_AREA);
-        Toast.makeText(getApplicationContext(),"get size"+dest.size(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"get size"+dest.size(),Toast.LENGTH_LONG).show();
 
 
         //convert bgr to rgb
         Imgproc.cvtColor(dest, dest, Imgproc.COLOR_BGR2RGB);
-        Toast.makeText(getApplicationContext(),"get size"+img.size(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(),"get size"+img.size(),Toast.LENGTH_LONG).show();
 
 
         //store values of r,g,b
@@ -229,14 +270,14 @@ public class AirQuality extends AppCompatActivity {
         Mat mR = lRgb.get(0);
         Mat mG = lRgb.get(1);
         Mat mB = lRgb.get(2);
-        Toast.makeText(getApplicationContext(),"RED:"+mR+"Green:"+mG+"Blue:"+mB,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"RED:"+mR+"Green:"+mG+"Blue:"+mB,Toast.LENGTH_LONG).show();
 //        textView.setText("Red"+mR.dump());
 //        Log.i(TAG,"Red"+mR.dump());
 
         //convert rgb to hsv
         Mat hsvImage = new Mat();
         Imgproc.cvtColor(dest,hsvImage,Imgproc.COLOR_RGB2HSV);
-        Toast.makeText(getApplicationContext(),"Image is in HSV",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Image is in HSV",Toast.LENGTH_SHORT).show();
 
         //get hsv values
         List<Mat> Rgb = new ArrayList<Mat>(3);
@@ -244,8 +285,8 @@ public class AirQuality extends AppCompatActivity {
         Mat mH = Rgb.get(0);
         Mat mS = Rgb.get(1);
         Mat mV = Rgb.get(2);
-        Toast.makeText(getApplicationContext(),"H: "+mH+"S:"+mS+"V:"+mV,Toast.LENGTH_LONG).show();
-        Log.i(TAG,"H: "+mH+"S:"+mS+"V:"+mV);
+        //Toast.makeText(getApplicationContext(),"H: "+mH+"S:"+mS+"V:"+mV,Toast.LENGTH_LONG).show();
+        // Log.i(TAG,"H: "+mH+"S:"+mS+"V:"+mV);
 //        textView.setText("Hsv image"+hsvImage.dump());
 
 
@@ -351,18 +392,18 @@ public class AirQuality extends AppCompatActivity {
 
     }
 
-    public void contrast(){
+    public float contrast(){
 
 
         dest = new Mat();
         Size scaleSize = new Size(256,256);
         Imgproc.resize(img,dest, scaleSize , 0, 0, INTER_AREA);
-        Toast.makeText(getApplicationContext(),"get size"+dest.size(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"get size"+dest.size(),Toast.LENGTH_LONG).show();
 
 
         //convert bgr to gray
         Imgproc.cvtColor(dest, dest, Imgproc.COLOR_BGR2GRAY);
-        Toast.makeText(getApplicationContext(),"get size"+img.size(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"get size"+img.size(),Toast.LENGTH_LONG).show();
 
         float s =0;
         float ss =0;
@@ -390,20 +431,21 @@ public class AirQuality extends AppCompatActivity {
 
         float contra;
         contra = (float) Math.sqrt(ss/(256*256));
-        Toast.makeText(getApplicationContext(),"Constrast: "+contra,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"Constrast: "+contra,Toast.LENGTH_LONG).show();
+        return contra;
     }
 
-    public void entropy(){
+    public float entropy(){
         //to resize image
         dest = new Mat();
         Size scaleSize = new Size(256,256);
         Imgproc.resize(img,dest, scaleSize , 0, 0, INTER_AREA);
-        Toast.makeText(getApplicationContext(),"get size"+dest.size(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"get size"+dest.size(),Toast.LENGTH_LONG).show();
 
 
         //convert bgr to gray
         Imgproc.cvtColor(dest, dest, Imgproc.COLOR_BGR2GRAY);
-        Toast.makeText(getApplicationContext(),"get size"+img.size(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"get size"+img.size(),Toast.LENGTH_LONG).show();
 
         //to calculate histogram
         MatOfInt histSize = new MatOfInt(256);
@@ -441,11 +483,12 @@ public class AirQuality extends AppCompatActivity {
                     if(val[p]!= 0.0){
                         ent += val[p]*(Math.log(val[p])/Math.log(2));}
                 }catch (Exception e){
-                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                 }
             }
 
         }
+        return (float) ent;
 
 //        values(hist);
     }
@@ -463,6 +506,39 @@ public class AirQuality extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Toast.makeText(AirQuality.this, ""+location.getLatitude()+","+location.getLongitude(), Toast.LENGTH_SHORT).show();
+        try {
+            Geocoder geocoder = new Geocoder(AirQuality.this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+            String address = addresses.get(0).getAddressLine(0);
+            Toast.makeText(this, ""+ address, Toast.LENGTH_SHORT).show();
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
 
 
 

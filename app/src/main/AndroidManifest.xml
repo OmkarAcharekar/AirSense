@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/applauncherlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".RegistrationSuccessMessage"></activity>
+        <activity android:name=".NewsActivity" />
         <activity android:name=".AQI" />
         <activity android:name=".AirQuality" />
         <activity android:name=".HomeScreenActivity" />

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,8 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static String LOG_TAG = "BlueSignIn";
     TextInputLayout phone, password;
+    RelativeLayout progressbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         TextView tvSignUp = findViewById(R.id.tvSignUp);
         phone = findViewById(R.id.tilEmail);
         password = findViewById(R.id.tilPassword);
+        progressbar = findViewById(R.id.loginprogress);
+
 
         bSignIn.setOnClickListener(this);
         tvForgotPassword.setOnClickListener(this);
@@ -59,6 +66,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 return;
             }
         }
+
+        progressbar.setVisibility(view.VISIBLE);
 
 
         String _phonenumber = phone.getEditText().getText().toString().trim();
@@ -82,11 +91,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Toast.makeText(LoginActivity.this,fullname, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivityside.class);
                                 startActivity(intent);
+                                finish();
 
                             } else {
+                                progressbar.setVisibility(View.GONE);
                                 Toast.makeText(LoginActivity.this, "password does not match", Toast.LENGTH_SHORT).show();
                             }
                         } else {
+                            progressbar.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this, "Data does not exist", Toast.LENGTH_SHORT).show();
                         }
 
@@ -94,8 +106,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+                        progressbar.setVisibility(View.GONE);
 
                         Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
 
                     }
                 });

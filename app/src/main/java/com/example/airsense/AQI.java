@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class AQI extends AppCompatActivity {
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class AQI extends AppCompatActivity {
         window.setStatusBarColor(ContextCompat.getColor(AQI.this, R.color.black));
 
         Button b1;
+        TextView text1;
+        text1 =findViewById(R.id.aq);
         b1 =findViewById(R.id.capturebutton);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +33,13 @@ public class AQI extends AppCompatActivity {
                 startActivity(new Intent(AQI.this,AirQuality.class));
             }
         });
+
+
+        Intent intent=getIntent();
+        text = intent.getStringExtra("prediction");
+        text1.setText(text);
+
+
 
     }
 }

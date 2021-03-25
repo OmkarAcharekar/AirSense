@@ -60,7 +60,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 intent.putExtra("user_password",password1);
                 intent.putExtra("phoneNo",_phone);
                 startActivity(intent);
-
             case R.id.tvSignIn:
                 finish();
                 break;

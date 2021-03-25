@@ -113,11 +113,12 @@ public class PhoneVerificationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                          if(whatToDo.equals("updateData")){
-                              updateOldUsersData();
+                          if(whatToDo == null){
+                              storeNewUsersData();
 
                           }else{
-                              storeNewUsersData();
+
+                              updateOldUsersData();
 
                           }
 
@@ -144,6 +145,9 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         DatabaseReference reference = rootNode.getReference("Users");
         UserHelperClass addNewuser = new UserHelperClass(name,email,password,phoneNo);
         reference.child(phoneNo).setValue(addNewuser);
+        Intent intent = new Intent(PhoneVerificationActivity.this,RegistrationSuccessMessage.class);
+        startActivity(intent);
+        finish();
     }
 
     public void callNextScreenFromOTP(View view){

@@ -3,7 +3,7 @@ package com.example.airsense.Databases;
 public class UserHelperClass {
 
     String fullname,email,password,phone;
-    public UserHelperClass(){}
+    //public UserHelperClass(){}
 
     public UserHelperClass(String fullname,String email,String password,String phone) {
         this.fullname = fullname;
