@@ -1,9 +1,8 @@
-package com.example.airsense;
+package com.example.airsense.authenticators;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +10,11 @@ import android.widget.Toast;
 
 import com.chaos.view.PinView;
 import com.example.airsense.Databases.UserHelperClass;
+import com.example.airsense.R;
+import com.example.airsense.RegistrationSuccessMessage;
+import com.example.airsense.SetNewPassword;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -134,7 +135,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
     }
 
     private void updateOldUsersData() {
-        Intent intent = new Intent(getApplicationContext(),SetNewPassword.class);
+        Intent intent = new Intent(getApplicationContext(), SetNewPassword.class);
         intent.putExtra("phoneNo",phoneNo);
         startActivity(intent);
         finish();
@@ -145,7 +146,7 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         DatabaseReference reference = rootNode.getReference("Users");
         UserHelperClass addNewuser = new UserHelperClass(name,email,password,phoneNo);
         reference.child(phoneNo).setValue(addNewuser);
-        Intent intent = new Intent(PhoneVerificationActivity.this,RegistrationSuccessMessage.class);
+        Intent intent = new Intent(PhoneVerificationActivity.this, RegistrationSuccessMessage.class);
         startActivity(intent);
         finish();
     }

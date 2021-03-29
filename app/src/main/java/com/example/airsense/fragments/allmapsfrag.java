@@ -1,8 +1,8 @@
-package com.example.airsense;
-
+package com.example.airsense.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.airsense.activities.AirQuality;
+import com.example.airsense.R;
+import com.example.airsense.activities.MainActivity;
 
+public class allmapsfrag extends Fragment {
 
-public class MyProfileFrag extends Fragment {
-
-    Button b1,b2;
+    Button b1;
+    private static int SPLASH_SCREEN = 0;
 
 
 
@@ -25,17 +26,15 @@ public class MyProfileFrag extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup)inflater.inflate(R.layout.myprofilefrag,container,false);
-        b1 = root.findViewById(R.id.button);
-        b1.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), AirQuality.class));
+            public void run() {
+                Intent intent = new Intent(getActivity(),com.example.airsense.activities.MapActivity.class);
+                startActivity(intent);
+
             }
-        });
-
-
-
-
+        },SPLASH_SCREEN);
         return root;
     }
+
 }

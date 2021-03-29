@@ -1,16 +1,14 @@
-package com.example.airsense;
+package com.example.airsense.activities;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
@@ -33,7 +31,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.airsense.ml.AirSenseModel;
+import com.example.airsense.R;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
@@ -46,15 +46,12 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,11 +65,15 @@ public class AirQuality extends AppCompatActivity implements LocationListener{
     private ImageView imageView;
     private Mat img,dest;
     private Button buttonTakePicture,features;
-    private Uri file;
+
     int capacity = 10;
     Bitmap photo;
+    private  FirebaseStorage storage;
+    private  StorageReference storageReference;
     double ent =0;
+
     LocationManager locationManager;
+
 
     public static final String TAG = "MainActivity";
     public static final int REQUEST_TAKE_PHOTO = 100;
@@ -103,7 +104,10 @@ public class AirQuality extends AppCompatActivity implements LocationListener{
             ex.printStackTrace();
         }
 
+
+
         getLocation();
+
 
         camera_open_id = (Button)findViewById(R.id.camera_button);
         click_image_id = (ImageView)findViewById(R.id.click_image);
@@ -228,7 +232,8 @@ public class AirQuality extends AppCompatActivity implements LocationListener{
             photo = (Bitmap) data.getExtras()
                     .get("data");
 
-            // Set the image in imageview for display
+
+                    // Set the image in imageview for display
             click_image_id.setImageBitmap(photo);
         }
     }

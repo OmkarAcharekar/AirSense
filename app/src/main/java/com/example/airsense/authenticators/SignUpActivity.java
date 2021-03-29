@@ -1,15 +1,22 @@
-package com.example.airsense;
+package com.example.airsense.authenticators;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.airsense.R;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener
 {   TextInputLayout fullname,phone,email,password;
@@ -28,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
+
+
         bSignUp.setOnClickListener(this);
         tvSignIn.setOnClickListener(this);
     }
@@ -35,38 +44,66 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view)
     {
-        if (!validateFullName() | !validatePhoneNumber() | !validateEmail() | !validatePassword()) {
-            return;
-        }
+
         switch (view.getId())
         {
             case R.id.bSignUp:
-                if(!validatePhoneNumber()){
+                if (!validateFullName() | !validatePhoneNumber() | !validateEmail() | !validatePassword()) {
                     return;
                 }
-                String name = fullname.getEditText().getText().toString().trim();
-                String emailid = email.getEditText().getText().toString().trim();
-                String password1 = password.getEditText().getText().toString().trim();
-                String val = phone.getEditText().getText().toString().trim();
-                String _phone = "+"+ 91 + val;
+                final String val = phone.getEditText().getText().toString().trim();
+                final String _phone = "+"+ 91 + val;
 
-                Intent intent = new Intent(SignUpActivity.this,PhoneVerificationActivity.class);
-                fullname = findViewById(R.id.tilUsername);
-                phone= findViewById(R.id.tilPhone);
-                email = findViewById(R.id.tilEmail);
-                password = findViewById(R.id.tilPassword);
-                intent.putExtra("username",name);
-                intent.putExtra("user_email",emailid);
-                intent.putExtra("user_password",password1);
-                intent.putExtra("phoneNo",_phone);
-                startActivity(intent);
+
+
+                Query checkuser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phone").equalTo(_phone);
+                checkuser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        if (snapshot.exists()) {
+                            Toast.makeText(SignUpActivity.this, "User Already Exist", Toast.LENGTH_SHORT).show();
+
+
+                        } else {
+                            String name = fullname.getEditText().getText().toString().trim();
+                            String emailid = email.getEditText().getText().toString().trim();
+                            String password1 = password.getEditText().getText().toString().trim();
+
+                            Intent intent = new Intent(SignUpActivity.this, PhoneVerificationActivity.class);
+                            fullname = findViewById(R.id.tilUsername);
+                            phone= findViewById(R.id.tilPhone);
+                            email = findViewById(R.id.tilEmail);
+                            password = findViewById(R.id.tilPassword);
+                            intent.putExtra("username",name);
+                            intent.putExtra("user_email",emailid);
+                            intent.putExtra("user_password",password1);
+                            intent.putExtra("phoneNo",_phone);
+                            startActivity(intent);
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+
+                        Toast.makeText(SignUpActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+                break;
+
+
             case R.id.tvSignIn:
-                finish();
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
                 break;
         }
     }
-
-
 
 
     private boolean validateFullName() {

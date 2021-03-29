@@ -1,28 +1,26 @@
-package com.example.airsense;
+package com.example.airsense.authenticators;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.airsense.activities.MainActivity;
+import com.example.airsense.MainActivity1;
+import com.example.airsense.MainActivityside;
+import com.example.airsense.R;
+import com.example.airsense.resetpassword;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -138,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        startActivity(new Intent(getApplicationContext(),MainActivity1.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity1.class));
                         finish();
 
                     }

@@ -419,12 +419,7 @@ public class GraphActivity extends BaseActivity {
         return ParseResult.OK;
     }
 
-    /**
-     * Returns a label for the dates, only one per day preferably at noon.
-     * @param weather weather entity
-     * @param i number of weather in long term forecast
-     * @return label (either short form of day in week or empty string)
-     */
+
     private String getDateLabel(Weather weather, int i) {
         String output = dateFormat.format(weather.getDate());
 
@@ -450,14 +445,7 @@ public class GraphActivity extends BaseActivity {
         }
     }
 
-    /**
-     * Returns a background chart with alternating vertical bars for each day.
-     * @param id BarChartView resource id
-     * @param min foreground chart min label
-     * @param max foreground chart max label
-     * @param includeLast true for foreground bar charts, false for foreground line charts
-     * @return background bar chart
-     */
+
     private BarChartView getBackgroundBarChart(@IdRes int id, int min, int max, boolean includeLast) {
         boolean visible = false;
         int lastHour = 25;

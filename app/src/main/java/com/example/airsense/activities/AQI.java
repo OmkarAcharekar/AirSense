@@ -1,4 +1,4 @@
-package com.example.airsense;
+package com.example.airsense.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -10,6 +10,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.airsense.R;
 
 public class AQI extends AppCompatActivity {
     String text;
@@ -30,7 +32,7 @@ public class AQI extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AQI.this,AirQuality.class));
+                startActivity(new Intent(AQI.this, AirQuality.class));
             }
         });
 

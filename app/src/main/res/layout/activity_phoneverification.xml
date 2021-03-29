@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA"
-    tools:context=".PhoneVerificationActivity">
+    tools:context=".authenticators.PhoneVerificationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

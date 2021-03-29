@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airsense.fragments.allmapsfrag;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -95,6 +96,11 @@ public class MainActivityside extends AppCompatActivity implements DrawerAdapter
             allmapsfrag allmapsfrag = new allmapsfrag();
             transaction.replace(R.id.container,allmapsfrag).commit();
         }
+        else if(position == POS_CART){
+            statisticsfrag statisticsfrag =new statisticsfrag();
+            transaction.replace(R.id.container,statisticsfrag).commit();
+        }
+
         slidingRootNav.closeMenu();
 
     }

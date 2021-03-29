@@ -19,14 +19,14 @@
         android:theme="@style/AppTheme1">
         <activity android:name=".RegistrationSuccessMessage"></activity>
         <activity android:name=".NewsActivity" />
-        <activity android:name=".AQI" />
-        <activity android:name=".AirQuality" />
+        <activity android:name=".activities.AQI" />
+        <activity android:name=".activities.AirQuality" />
         <activity android:name=".HomeScreenActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".PhoneVerificationActivity" />
+        <activity android:name=".authenticators.SignUpActivity" />
+        <activity android:name=".authenticators.PhoneVerificationActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".OnBoardingActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".authenticators.LoginActivity" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity1">
             <intent-filter>

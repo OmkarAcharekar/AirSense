@@ -128,6 +128,7 @@ public class MainActivity extends BaseActivity implements LocationListener {
     private SharedPreferences prefs;
     private LinearLayout linearLayoutTapForGraphs;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Initialize the associated SharedPreferences file with default values

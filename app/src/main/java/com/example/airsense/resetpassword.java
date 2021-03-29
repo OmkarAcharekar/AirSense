@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.airsense.authenticators.PhoneVerificationActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,7 +67,7 @@ public class resetpassword extends AppCompatActivity {
                 if (snapshot.exists()) {
                     phonenumberfield.setError(null);
                     phonenumberfield.setErrorEnabled(false);
-                    Intent intent = new Intent(resetpassword.this,PhoneVerificationActivity.class);
+                    Intent intent = new Intent(resetpassword.this, PhoneVerificationActivity.class);
                     intent.putExtra("phoneNo",_phone);
                     intent.putExtra("whatToDo","updateData");
                     startActivity(intent);

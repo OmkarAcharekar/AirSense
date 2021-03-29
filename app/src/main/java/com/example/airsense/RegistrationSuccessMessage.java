@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.airsense.authenticators.LoginActivity;
+
 public class RegistrationSuccessMessage extends AppCompatActivity {
 
     Button b1;
@@ -20,7 +22,7 @@ public class RegistrationSuccessMessage extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationSuccessMessage.this,LoginActivity.class));
+                startActivity(new Intent(RegistrationSuccessMessage.this, LoginActivity.class));
             }
         });
 
