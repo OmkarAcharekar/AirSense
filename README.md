@@ -1,9 +1,7 @@
 <h1 align="center">
   <br>
-  <img src="app/src/main/assets/images/2021-11-27 (5).png" alt="Markdownify" width="200"></a>
-  <br style="font-size:300%;">
-   ChatValve
-  <br>
+  <img src="app/src/main/assets/images/2021-11-27 (5).png" alt="Markdownify" width="400"></a>
+  
 </h1>
 
 <h4 align="center">An  Real Time  End-To-End  Encrypted Messaging  Application</h4>
