@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="https://github.com/OmkarAcharekar/Signal_Clone/blob/master/assets/images/bubble-chat.png" alt="Markdownify" width="200"></a>
+  <img src="app/src/main/assets/images/2021-11-27 (5).png" alt="Markdownify" width="200"></a>
   <br style="font-size:300%;">
    ChatValve
   <br>
