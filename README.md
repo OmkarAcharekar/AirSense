@@ -35,7 +35,8 @@
 Screenshots
 -----------
 
-![List of plants](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png)
+
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png" width="150" height="280">
 ![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png)
 ![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png)
 ![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/aas.png)
