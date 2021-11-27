@@ -37,12 +37,12 @@ Screenshots
 
 
 <img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png" width="150" height="280">
-![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png)
-![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png)
-![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/aas.png)
-![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/map.png)
-![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/na.png)
-![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/uuu.png)
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png" width="150" height="280">
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png" width="150" height="280">
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/aas.png" width="150" height="280">
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/map.png" width="150" height="280">
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/na.png" width="150" height="280">
+<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/uuu.png" width="150" height="280">
 
 
 
