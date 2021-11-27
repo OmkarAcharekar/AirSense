@@ -45,10 +45,13 @@ Screenshots
    <tr>
      <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png" width="200" height="350"></td>
     <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png" width="200" height="350"></td>
-    <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/map.png" width="200" height="350"></td>
+      <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/qqq.png" width="200" height="350"></td>
+   
   </tr>
    <tr>
     <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png" width="200" height="350"></td>
+      <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/map.png" width="200" height="350"></td>
+      <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/mm.png" width="200" height="350"></td>
    
   </tr>
  </table>
