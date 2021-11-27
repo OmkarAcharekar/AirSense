@@ -35,14 +35,16 @@
 Screenshots
 -----------
 
+<table>
+  <tr>
+    <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png" width="150" height="280"></td>
+    <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png" width="150" height="280"></td>
+    <td><img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png" width="150" height="280"></td>
+  </tr>
+ </table>
 
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png" width="150" height="280">
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png" width="150" height="280">
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png" width="150" height="280">
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/aas.png" width="150" height="280">
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/map.png" width="150" height="280">
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/na.png" width="150" height="280">
-<img src="https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/uuu.png" width="150" height="280">
+
+
 
 
 
