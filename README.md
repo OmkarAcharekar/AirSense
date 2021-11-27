@@ -35,9 +35,13 @@
 Screenshots
 -----------
 
-![List of plants](screenshots/phone_plant_list.png "A list of plants")
-![Plant details](screenshots/phone_plant_detail.png "Details for a specific plant")
-![My Garden](screenshots/phone_my_garden.png "Plants that have been added to your garden")
+![List of plants](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/AQI.png)
+![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/Dom.png)
+![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/SAVINH.png)
+![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/aas.png)
+![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/map.png)
+![Plant details](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/na.png)
+![My Garden](https://github.com/OmkarAcharekar/AirSense/blob/master/app/src/main/assets/images/uuu.png)
 
 
 
