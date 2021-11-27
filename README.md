@@ -4,10 +4,10 @@
   
 </h1>
 
-<h4 align="center">An  Real Time  End-To-End  Encrypted Messaging  Application</h4>
+<h4 align="center">Air Quality Predictor and Weather Application</h4>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![React_Native](https://img.shields.io/badge/react%20native-v0.66-orange)
+
 [![Build Status](https://img.shields.io/badge/build-passing-green)](https://img.shields.io/badge/build-passing-green)
 ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
@@ -26,43 +26,47 @@
 
 ## Key Features
 
-* Encryption and Security
-  - Messages are encrypted on the sender system or device, and only the intended recipient can decrypt it.
-* Registration page and contact integration
-  - App require users to sign in with a phone number. It sends an SMS confirmation code for security reasons. After registering, users  can login in their Account.
-  
-* Offers both private and group chats. 
-  -  A group chat option lets users create a group and chat with multiple people at the same time.
-  
-* Push notification
-  -  It keep users active within the app and inform them when new messages have arrived or someone comes online.
-  
-* Messages
-  - Users can send various type of messages like Audio Message,Text Messages ,Images and can also see user online status.
+* Machine learning based Android mobile application to provide real time air quality index using camera images which is reliable and inexpensive
+* Smartphone users can take photos and estimate the real-time local air quality by themselves .They can know the air they breathe without need of Expensive and non portable meters.
+* App also offers recommendations to deal with high pollution situations and will also able to see weather details and future forecasting of weather of his his nearest cities and places.
+* User will also get Maps and Statistics of Weather.
+
+
+Screenshots
+-----------
+
+![List of plants](screenshots/phone_plant_list.png "A list of plants")
+![Plant details](screenshots/phone_plant_detail.png "Details for a specific plant")
+![My Garden](screenshots/phone_my_garden.png "Plants that have been added to your garden")
+
+
 
 
 ## How To Use
 
-To clone and run this application, you should have [Git](https://git-scm.com/downloads), [React Native & Expo environment set up](https://expo.dev/), [AWS Account and AWS CLI setup](https://aws.amazon.com/console/),[Node.js](https://nodejs.org/en/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you should have [Git](https://git-scm.com/downloads), [Android Studio ](https://developer.android.com/studio) installed on your computer. From your command line:
 
-```bash
-# Clone this repository
-$ git clone https://github.com/OmkarAcharekar/Signal_Clone.git
+To get the code running just follow the following steps:
 
-# Go into the repository
-$ cd Signal_Clone
+- [Get the code with cloning our GitHub repository](https://help.github.com/articles/cloning-a-repository)
+- [Set up your Android Development Environment](https://developer.android.com/topic/instant-apps/getting-started/setup.html)
+- [Import AirSense Android Project to your IDE](https://developer.android.com/studio/projects/create-project.html#ImportAProject)
+- [Run the code with Gradle Task: install_debug](https://developer.android.com/studio/run/index.html#gradle-console)
 
-# Install dependencies
-$ npm install
+## OpenWeather Api key
 
-# Init amplify project and push it to the cloud 
-$ amplify init 
-$ amplify push
+Sunflower uses the [ OpenWeatherMap  API](https://openweathermap.org/api) to load pictures on the gallery
+screen. To use the API, you will need to obtain a free developer API key. See the
+[ OpenWeather  API Documentation](https://openweathermap.org/price) for instructions.
 
-# Run the app
-$ npm start
+Once you have the key, add this line to the `keys.xml` file, in
+directory (app/src/main/res/values/keys.xml) in the project's root folder:
+
+```
+<string name="apiKey" translatable="false">"Your Api key"</string>
 ```
 
+The app is still usable without an API key, though you won't be able to get Weather Information
 
 
 
@@ -75,13 +79,12 @@ You can [download](https://github.com/amitmerchant1990/electron-markdownify/rele
 
 This software uses the following :
 
-- [React Native](http://electron.atom.io/)
-- [Expo](http://showdownjs.github.io/showdown/)
-- [Node.js](https://nodejs.org/)
-- [TypeScript](https://github.com/chjj/marked)
-- [Aws Amplify](http://codemirror.net/)
-- Icons are taken from [here](https://icons.expo.fyi/)
-
+- [Android Studio](https://developer.android.com/studio)
+- [Tensorflow](https://www.tensorflow.org/)
+- [Python](https://www.python.org/)
+- [Java](https://www.java.com/en/)
+- [Google Firebase](https://firebase.google.com/)
+- [OpenCv](https://opencv.org/)
 
 
 
