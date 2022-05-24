@@ -75,7 +75,7 @@ To get the code running just follow the following steps:
 
 ## OpenWeather Api key
 
-Sunflower uses the [ OpenWeatherMap  API](https://openweathermap.org/api) to load pictures on the gallery
+AirSense uses the [ OpenWeatherMap  API](https://openweathermap.org/api) to load pictures on the gallery
 screen. To use the API, you will need to obtain a free developer API key. See the
 [ OpenWeather  API Documentation](https://openweathermap.org/price) for instructions.
 
